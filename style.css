@@ -256,14 +256,27 @@ input[type="number"] {
     list-style: none;
 }
 
+
 .history-item {
     display: flex;
     justify-content: space-between;
     gap: 16px;
-    padding: 13px 0;
+    padding: 16px 0;
     border-bottom: 1px solid var(--line);
+    font-size: 16px;
+}
+
+.history-item strong {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 16px;
+}
+
+.history-item small {
+    color: var(--muted);
     font-size: 13px;
 }
+
 
 .history-item strong {
     display: block;
