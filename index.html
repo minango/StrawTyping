@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StrawTyping</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="#" id="homeLink">StrawTyping</a>
+        <button id="soundButton" class="small-button">効果音：ON</button>
+    </header>
+
+    <main>
+        <!-- ホーム画面 -->
+        <section id="homeScreen" class="screen">
+            <div class="hero">
+                <p class="eyebrow">TYPING STUDIO</p>
+                <h1>StrawTyping</h1>
+                <p class="lead">
+                    すとろーが作ったタイピングサイト<br>
+                    やりこみ要素あり
+                </p>
+
+                <div class="settings-panel">
+                    <label for="difficulty">プレイモード</label>
+                    <select id="difficulty">
+                        <option value="words">単語モード</option>
+                        <option value="sentences">短文モード</option>
+                        <option value="english">英文モード</option>
+                        <option value="missLimit">ミス制限モード</option>
+                        <option value="longText">長文タイムアタック（30秒）</option>
+                    </select>
+
+                    <div id="missSettings" class="mode-settings" hidden>
+                        <label for="missType">出題タイプ</label>
+                        <select id="missType">
+                            <option value="words">単語</option>
+                            <option value="sentences">短文</option>
+                            <option value="english">英文</option>
+                        </select>
+
+                        <label for="missLimit">ミス上限（1〜99回）</label>
+                        <input id="missLimit" type="number"
+                               min="1" max="99" value="5">
+                    </div>
+
+                    <div id="longSettings" class="mode-settings" hidden>
+                        <label for="longLanguage">長文の言語</label>
+                        <select id="longLanguage">
+                            <option value="japanese">日本語（ローマ字入力）</option>
+                            <option value="english">英語</option>
+                        </select>
+                        <p class="muted">
+                            制限時間は30秒です。
+                            正しく入力したキー数からKPMを計算します。
+                        </p>
+                    </div>
+
+                    <button id="startButton" class="primary-button">
+                        ゲームスタート
+                    </button>
+
+                    <p class="key-hint">
+                        通常・ミス制限モードは15問 ·
+                        Spaceキーで開始・Escで中断
+                    </p>
+                </div>
+            </div>
+
+            <div class="home-grid">
+                <section class="panel">
+                    <h2>遊び方</h2>
+                    <ol class="instructions">
+                        <li>プレイモードを選ぶ</li>
+                        <li>表示された文章を打つ</li>
+                        <li>通常・ミス制限モードは15問で終了</li>
+                        <li>長文タイムアタックは30秒で終了</li>
+                    </ol>
+                    <p class="muted">
+                        ローマ字は複数の入力方法に対応。
+                        ゲーム中に Esc キーを押すと中断できます。
+                    </p>
+                </section>
+
+                <section class="panel">
+                    <h2>あなたの記録</h2>
+                    <p class="muted">最高KPM</p>
+                    <p id="bestScore" class="record-number">0</p>
+                    <div class="record-line">
+                        <span>プレイ回数</span>
+                        <strong id="playCount">0回</strong>
+                    </div>
+                </section>
+            </div>
+
+            <section class="panel history-panel">
+                <div class="section-heading">
+                    <h2>自己ランキング</h2>
+                </div>
+                <ol id="rankingList" class="ranking-list">
+                    <li class="empty-record">まだ記録がありません。</li>
+                </ol>
+            </section>
+
+            <section class="panel history-panel">
+                <div class="section-heading">
+                    <h2>プレイ履歴</h2>
+                    <button id="clearHistoryButton" class="small-button">
+                        履歴を削除
+                    </button>
+                </div>
+                <div id="historyList">
+                    <p class="muted">
+                        プレイすると、ここに記録が表示されます。
+                    </p>
+                </div>
+            </section>
+        </section>
+
+        <!-- ゲーム画面 -->
+        <section id="gameScreen" class="screen" hidden>
+            <div class="game-heading">
+                <div>
+                    <p class="eyebrow">NOW PLAYING</p>
+                    <h1>タイピング中</h1>
+                </div>
+                <button id="quitButton" class="secondary-button">
+                    中断する（Esc）
+                </button>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-label">KPM</span>
+                    <strong class="stat-value" id="currentKpm">0</strong>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">正確性</span>
+                    <strong class="stat-value" id="currentAccuracy">100%</strong>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">ミス数</span>
+                    <strong class="stat-value" id="currentMistakes">0</strong>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">問題数</span>
+                    <strong class="stat-value" id="questionCount">0 / 15</strong>
+                </div>
+            </div>
+
+            <section class="panel">
+                <div class="question">
+                    <p class="muted">表示された内容を入力</p>
+                    <h2 id="word">準備中…</h2>
+                    <p id="romaji" class="romaji"></p>
+                </div>
+                <p id="message" class="message">準備しよう！</p>
+                <p class="key-hint">キーボードで直接入力 · Escで中断</p>
+            </section>
+        </section>
+
+        <!-- 結果画面 -->
+        <section id="resultScreen" class="screen" hidden>
+            <section class="panel result-card">
+                <p class="eyebrow">GAME RESULT</p>
+                <h1 id="resultTitle">おつかれさま！</h1>
+                <p id="resultMessage" class="lead">
+                    今回の結果はこちら。
+                </p>
+
+                <div class="result-score">
+                    <span>最終KPM</span>
+                    <strong id="resultKpm">0</strong>
+                </div>
+
+                <div class="result-grid">
+                    <div class="result-stat">
+                        <span>クリア数</span>
+                        <strong id="resultCorrect">0/15問</strong>
+                    </div>
+                    <div class="result-stat">
+                        <span>正確性</span>
+                        <strong id="resultAccuracy">100%</strong>
+                    </div>
+                    <div class="result-stat">
+                        <span>ミス数</span>
+                        <strong id="resultMistakes">0回</strong>
+                    </div>
+                    <div class="result-stat">
+                        <span>プレイモード</span>
+                        <strong id="resultDifficulty">単語モード</strong>
+                    </div>
+                </div>
+
+                <button id="retryButton" class="primary-button">
+                    もう一度プレイ
+                </button>
+                <button id="resultHomeButton"
+                        class="secondary-button full-button">
+                    ホームへ戻る
+                </button>
+            </section>
+        </section>
+    </main>
+
+    <div id="countdownOverlay" hidden>
+        <div id="countdownNumber">3</div>
+    </div>
+
+    <footer>StrawTyping · Typing practice</footer>
+</body>
+</html>
