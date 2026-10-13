@@ -116,7 +116,7 @@ const difficultySettings = {
     sentences: { label: "短文モード" },
     english: { label: "英文モード" },
     missLimit: { label: "ミス制限モード" },
-    longText: { label: "長文タイムアタック" }
+    longText: { label: "長文モード" }
 };
 
 const $ = id => document.getElementById(id);
@@ -318,12 +318,10 @@ function refreshRecords() {
 
         details.append(title, date);
 
-        const points = document.createElement("span");
-        points.className = "history-score";
-        points.textContent = `${item.correct || 0}問正解`;
 
-        row.append(details, points);
+        row.appendChild(details);
         historyList.appendChild(row);
+;
     });
 }
 
