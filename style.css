@@ -580,11 +580,6 @@ footer {
         gap: 0;
     }
 }
-/* 長文モードのひらがなを小さくする */
-#word {
-  font-size: 24px;
-  line-height: 1.8;
-}
 
 /* ===== お知らせページ ===== */
 
@@ -677,6 +672,8 @@ footer {
 }
 
 /* ===== お知らせページの色合いをホーム画面に統一 ===== */
+```css
+/* ===== お知らせページの色合いをホーム画面に統一 ===== */
 
 .news-page {
     background: var(--background);
@@ -714,3 +711,61 @@ footer {
     color: var(--muted);
 }
 
+/* ===== タイピング画面の文字サイズ ===== */
+
+/* 単語・短文・英文の表示 */
+#gameScreen .question h2 {
+    font-size: clamp(24px, 4vw, 34px);
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+/* ローマ字表示 */
+#gameScreen .romaji {
+    font-size: clamp(24px, 3.5vw, 30px);
+    line-height: 1.8;
+    letter-spacing: 1px;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+/* 入力済み・未入力の文字も同じサイズ */
+#gameScreen .romaji .typed,
+#gameScreen .romaji .remaining {
+    font-size: inherit;
+}
+
+/* 長文モードは日本語を少し小さめに */
+#gameScreen.long-text-mode #word {
+    font-size: 22px;
+    line-height: 1.9;
+    overflow-wrap: anywhere;
+}
+
+/* 長文モードのローマ字 */
+#gameScreen.long-text-mode #romaji {
+    font-size: 28px;
+    line-height: 1.8;
+    letter-spacing: 1px;
+}
+
+/* スマホ・狭い画面 */
+@media (max-width: 600px) {
+    #gameScreen .question h2 {
+        font-size: 24px;
+    }
+
+    #gameScreen .romaji {
+        font-size: 22px;
+        letter-spacing: 0;
+    }
+
+    #gameScreen.long-text-mode #word {
+        font-size: 19px;
+    }
+
+    #gameScreen.long-text-mode #romaji {
+        font-size: 22px;
+    }
+}
+```

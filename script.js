@@ -1,5 +1,5 @@
 const words = [
-    "猫", "りんご", "さくら", "いぬ", "そら",
+    "ねこ", "りんご", "さくら", "いぬ", "そら",
     "し", "ち", "つ", "ふ", "じ",
     "しゃ", "しゅ", "しょ", "ちゃ", "ちゅ", "ちょ",
     "じゃ", "じゅ", "じょ", "きゃ", "きゅ", "きょ",
@@ -40,7 +40,10 @@ const base = {
     "ゃ": ["xya", "lya"], "ゅ": ["xyu", "lyu"], "ょ": ["xyo", "lyo"],
     "っ": ["xtu", "ltu", "xtsu", "ltsu"],
     "ふぁ": ["fa", "fwa"], "ふぃ": ["fi", "fyi"],
-    "ふぇ": ["fe"], "ふぉ": ["fo"]
+    "ふぇ": ["fe"], "ふぉ": ["fo"], "ふぇ": ["fe"], "ふぉ": ["fo"],
+    "、": [","],
+    "。": ["."],
+    "ー": ["-"]
 };
 
 const smallY = {
@@ -72,40 +75,112 @@ const combo = {
 
 const modePrompts = {
     words: [
-        "ねこ", "りんご", "さくら", "いぬ", "そら",
-        "たまご", "すいか", "はなび", "でんしゃ",
-        "ともだち", "ひまわり", "ほしぞら",
-        "がっこう", "しんぶん", "ありがとう"
+        "しょうがくせい", "しょうがっこう", "ちゅうがくせい", "ちゅうがっこう", "こうこうせい",
+    "こうとうがっこう", "こくご", "さんすう", "すうがく", "りか",
+    "しゃかい", "えいご", "しょうぼうし", "しょうぼうしゃ", "ひょうげん", "ひょうじょう",
+    "じゃくにくきょうしょく", "つうじょう", "ふつう", "きりぎりす", "こうたい", "ほうたい",
+    "こうちょう", "こうちょうしつ", "ひんぱん", "ふぁいる", "たっきゅう", "てにす",
+    "あそぶ", "こわい", "さいぼう", "きょうそう", "きょうそうきょく", "ばしょ",
+    "なんこつ", "ぎゅうどん", "しずむ", "らくたん", "かし", "かしゅ",
+    "しるし", "ぼうそう", "たまご", "どんまい", "ぶんしょう",
+    "ぶんせつ", "たんご", "ちょうぶん", "ちょうし", "すいか",
+    "はなび", "きゅうきゅうしゃ", "きゅうしょく", "おはよう",
+    "ともだち", "ほしぞら", "しょうごう", "かんせい",
+    "がっこう", "よろこぶ", "しんぶん"
     ],
     sentences: [
-        "おはようございます",
-        "きょうはいいてんきです",
-        "ねこがにわであそんでいる",
-        "まいにちすこしずつれんしゅうする",
-        "すきなことをたのしくつづけよう"
-    ],
+    "おはようございます",
+    "しょうがくせいといっしょにきゅうしょくをたべる",
+    "ねこがにわであそんでいる",
+    "まいにちすこしずつれんしゅうする",
+    "すきなことをたのしくつづけよう",
+    "じんせいはたのしい",
+    "どうがのこうこくがながい",
+    "こうこくのまちじかんにたいぴんぐをする",
+    "しゅうちゅうりょくをたもつ",
+    "まいにちてきどにすいぶんほきゅう",
+    "しょうがくせいがしょうらいしょうぼうしになる",
+    "とうかいどうしんかんせんにのりおくれる",
+    "べんきょうはりょうよりこうりつがだいじ",
+    "たいぴんぐのちょうしがわるい",
+    "こくりつがっこうにかようせいと",
+    "じゅうみんのふまんをむしするしちょう",
+    "どうがのしちょうしゃがふえることによろこぶ",
+    "たいぴんぐさいとのぶんしょうをかんがえるのはとてもたいへんだ",
+    "もくひょうはしょうり",
+    "ちゅうがくせいがうちゅうひこうしをめざす",
+    "けっこううちやすいぶんしょう",
+    "どうろをこうじする",
+    "かみのげんかいをにんげんがたっせいしてしまう",
+    "せかいのちょうてんにたつ",
+    "しょうがくせいがしょうがをたべてしまうことはしょうがない",
+    "こうそくどうろをつうこうするきゅうきゅうしゃ",
+    "ほうしゃせいぶっしつをほうちする",
+    "ひとのこころをかしかする",
+    "ながいうたをうたう",
+    "こうこうせいがほうたいをこうかんする",
+    "さべつのないよのなか",
+    "まいにちたんたんめんをたべる",
+    "じぶんのちからでじしんをおこしてじしんのじしんをこうじょうする",
+    "じゅうぶんたのしいたいぴんぐさいとをつくる",
+    "あともうちょっとでおわる",
+    "ちきゅうおんだんかをとめたい",
+    "こうちょうそうちょうぜっこうちょう",
+    "きゅうしょくとうばんのしごとをさぼる",
+    "さいこうにおいしいおべんとう",
+    "あらそいたえることないせまいかいわい",
+    "めずらしいずかんをこうにゅうする"
+],
     english: [
-        "hello",
-        "good morning",
-        "thank you",
-        "nice to meet you",
-        "I like typing",
-        "Have a nice day",
-        "Practice makes progress"
-    ]
+    "Good morning.",
+    "Thank you.",
+    "We want more time to finish.",
+    "What are you doing now?",
+    "I am going to see a movie tonight.",
+    "Do you do your homework?",
+    "I run in the park before school.",
+    "This is Haru.",
+    "I like typing.",
+    "This is your size.",
+    "Many of the men and women are far away.",
+    "We come through the gate.",
+    "I found his key.",
+    "He put on his jacket.",
+    "He is putting water into the bottle.",
+    "I teach you.",
+    "Practice makes perfect.",
+    "I hit the ball with the bat.",
+    "We found it easy to use the app.",
+    "I am such a genius.",
+    "You can open online data to save the menu.",
+    "The admin can check the visual signals on site "
+]
 };
 
-// 長文タイムアタック用のお題
 // 日本語はローマ字入力しやすいひらがな文
 const longPassages = {
     japanese: [
-        "あさはやくおきてまどをあけるとすずしいかぜがへやにはいってきましたきょうもすこしずつれんしゅうをつづけてじぶんのもくひょうにちかづいていきます",
-        "すきなことをたのしくつづけるためにはあせらずにまいにちすこしずつとりくむことがたいせつですできることがふえるともっとじしんがついてきます"
-    ],
+    "あさのひかりがまどからさしこみ、へやのなかがすこしずつあかるくなりました。わたしはかおをあらい、あさごはんをたべてから、きょうのよていをのーとにかきました。そとではことりがなき、にわのきにはちいさなはがかぜにゆれています。がっこうへむかうみちでは、ちかくのひとにあいさつをしました。いつものけしきにも、あたらしいはっけんがあります。",
+
+    "たいぴんぐがじょうずになるには、はやさだけでなく、せいかくさをいしきすることがたいせつです。はじめはキーのばしょをさがすのにじかんがかかっても、すこしずつれんしゅうすれば、ゆびのうごきがしぜんになります。ほーむぽじしょんにもどるくせをつけると、つぎのもじをうちやすくなります。まちがえたときは、あせらずにかくにんしましょう。",
+
+    "やすみのひのごご、わたしはちかくのこうえんまでさんぽにでかけました。みちのわきにはいろとりどりのはながさき、きのはのあいだからやわらかなひかりがさしていました。ひろばではこどもたちがげんきにあそび、べんちではほんをよんでいるひとがいます。わたしはそらをながめながら、ゆっくりとしたじかんをたのしみました。",
+
+    "あたらしいことをはじめるとき、さいしょからじょうずにできるひとはおおくありません。しっぱいしても、くりかえしちょうせんすることで、すこしずつできることがふえていきます。おおきなもくひょうだけでなく、きょうできるちいさなことをたいせつにしましょう。つかれたときにはやすみ、じぶんのぺーすでつづけることが、せいちょうにつながります。",
+
+    "としょかんには、しらないせかいをおしえてくれるほんがたくさんあります。どうぶつのくらしや、とおいくにのぶんか、かがくのふしぎについてかかれたほんなど、しゅるいもさまざまです。わたしはせんじつ、ほしやつきについてのほんをよみました。きになったことをのーとにかいてしらべると、いつものけしきにもあたらしいはっけんがふえていきます。"
+],
     english: [
-        "Typing is a skill that grows with practice. Stay relaxed, focus on accuracy, and keep a steady rhythm. Small improvements every day can lead to great results.",
-        "A good practice session does not need to be perfect. Take your time, learn from mistakes, and enjoy seeing your speed improve little by little."
-    ]
+    "Typing is a skill that improves with practice. Start slowly and focus on accuracy before trying to type faster. When you make a mistake, take a moment to find the correct key and try again. A little practice every day can help you become more confident. Enjoy learning at your own pace and celebrate every small improvement.",
+
+    "Every morning, I wake up and get ready for a new day. I eat breakfast, check my school bag, and make sure I have everything I need. On my way to school, I enjoy looking at the sky and the trees along the road. Even an ordinary day can bring something interesting if we pay attention to the world around us.",
+
+    "Reading books is a great way to discover new ideas. Some books teach us about science, while others tell exciting stories about people and places. When I find something interesting, I write it in my notebook so I can remember it later. Sharing ideas with friends also helps me see things from a different point of view.",
+
+    "Learning something new can be difficult at first. You may make mistakes or feel that you are not improving quickly enough. However, every attempt gives you another chance to learn. Set a small goal, practice regularly, and take breaks when you need them. The most important thing is to keep enjoying the process and move forward at your own pace.",
+
+    "On a sunny afternoon, I visited a park near my home. Children were playing on the grass, and birds were singing in the trees. I sat on a bench and watched the clouds slowly move across the sky. After a while, I walked to a small bakery and bought some fresh bread. It was a simple day, but it made me feel relaxed and happy."
+]
 };
 
 const TOTAL_QUESTIONS = 15;
@@ -489,10 +564,63 @@ function getTokens(japanese) {
 }
 
 // ローマ字表示
+// 入力したローマ字に合わせて残りの表示を更新
 function updateRomaji() {
-    const display = currentTokens
-        .map(token => token[0])
-        .join("");
+    // 今の入力に合うローマ字ルートを探す
+    function findRemaining(tokenIndex, position) {
+        // すべての入力候補を使い切った
+        if (tokenIndex >= currentTokens.length) {
+            return position === typed.length ? "" : null;
+        }
+
+        // 入力済みの位置なら、残りは標準の候補で表示
+        if (position === typed.length) {
+            return currentTokens
+                .slice(tokenIndex)
+                .map(token => token[0])
+                .join("");
+        }
+
+        const remainingTyped = typed.slice(position);
+
+        for (const option of currentTokens[tokenIndex]) {
+            const commonLength = Math.min(
+                remainingTyped.length,
+                option.length
+            );
+
+            // 入力と候補の先頭が一致しなければ次の候補へ
+            if (
+                remainingTyped.slice(0, commonLength) !==
+                option.slice(0, commonLength)
+            ) {
+                continue;
+            }
+
+            // 候補の途中まで入力している
+            if (remainingTyped.length < option.length) {
+                return option.slice(remainingTyped.length) +
+                    currentTokens
+                        .slice(tokenIndex + 1)
+                        .map(token => token[0])
+                        .join("");
+            }
+
+            // この候補を入力し終えたので次の文字へ
+            const result = findRemaining(
+                tokenIndex + 1,
+                position + option.length
+            );
+
+            if (result !== null) {
+                return result;
+            }
+        }
+
+        return null;
+    }
+
+    const remaining = findRemaining(0, 0);
 
     $("romaji").replaceChildren();
 
@@ -502,7 +630,9 @@ function updateRomaji() {
 
     const remainingSpan = document.createElement("span");
     remainingSpan.className = "remaining";
-    remainingSpan.textContent = display.slice(typed.length);
+
+    remainingSpan.textContent = remaining ??
+        currentTokens.map(token => token[0]).join("").slice(typed.length);
 
     $("romaji").append(typedSpan, remainingSpan);
 }
@@ -556,6 +686,10 @@ function startGame() {
     pauseStartedAt = null;
 
     currentDifficulty = $("difficulty").value;
+    $("gameScreen").classList.toggle(
+    "long-text-mode",
+    currentDifficulty === "longText"
+    );
     invalidRecord = false;
     clearInterval(timerInterval);
     timerInterval = null;
@@ -816,7 +950,7 @@ document.addEventListener("keydown", event => {
           (
                activePromptMode === "english"
                  ? /^[a-z0-9 .,!?'-]$/i.test(key)
-                    : /^[a-z]$/i.test(key)
+                    : /^[a-z,、，]$/i.test(key)
           )
         ) {
               promptFirstKeyAt = Date.now();
@@ -954,12 +1088,18 @@ document.addEventListener("keydown", event => {
               return;
             }
 
-    // 日本語モードは英字のみ
-    if (!/^[a-z]$/i.test(key)) return;
 
+if (!/^[a-z,、，.。-]$/i.test(key)) return;
     totalKeystrokes++;
 
-    const newTyped = typed + key.toLowerCase();
+
+    const newTyped = typed + (
+    key === "、" || key === "，"
+        ? ","
+        : key === "。"
+            ? "."
+            : key.toLowerCase()
+);
 
     if (!canMatch(newTyped, currentTokens)) {
         mistakes++;
@@ -989,7 +1129,6 @@ document.addEventListener("keydown", event => {
     updateStats();
 
     // 長文タイムアタック（日本語）
-    // お題を最後まで入力したら次の長文へ
     if (currentDifficulty === "longText") {
         if (canMatch(typed, currentTokens, true)) {
             score++;
@@ -1004,21 +1143,22 @@ document.addEventListener("keydown", event => {
 
     // すべて入力し終えたかを確認
     if (canMatch(typed, currentTokens, true)) {
-    showPromptStats();
-    score++;
-    correct++;
+        showPromptStats();
+        score++;
+        correct++;
 
-    playSound("correct");
-    updateStats();
+        playSound("correct");
+        updateStats();
 
-    if (score >= TOTAL_QUESTIONS) {
-        finishGame();
+        if (score >= TOTAL_QUESTIONS) {
+            finishGame();
+        } else {
+            scheduleNextWord();
+        }
     } else {
-        scheduleNextWord();
+        $("message").textContent = "";
     }
-} else {
-    $("message").textContent = "";
-}
+
 });
 
 // ホーム画面・結果画面でSpaceキーを押すと開始
