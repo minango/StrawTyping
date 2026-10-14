@@ -8,6 +8,7 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+
     <header class="topbar">
         <a class="brand" href="#" id="homeLink">StrawTyping</a>
         <button id="soundButton" class="small-button">効果音：ON</button>
@@ -19,6 +20,7 @@
             <div class="hero">
                 <p class="eyebrow">TYPING STUDIO</p>
                 <h1>StrawTyping</h1>
+
                 <p class="lead">
                     すとろーが作ったタイピングサイト<br>
                     複数のモードがあります！
@@ -85,15 +87,48 @@
                     </p>
                 </section>
 
-                <section class="panel">
-                    <h2>あなたの記録</h2>
-                    <p class="muted">最高KPM</p>
-                    <p id="bestScore" class="record-number">0</p>
-                    <div class="record-line">
-                        <span>プレイ回数</span>
-                        <strong id="playCount">0回</strong>
-                    </div>
-                </section>
+
+<section class="panel">
+    <h2>あなたの記録</h2>
+
+    <p class="muted">全モードの最高KPM</p>
+    <p id="bestScore" class="record-number">0</p>
+
+    <div class="record-line">
+        <span>プレイ回数</span>
+        <strong id="playCount">0回</strong>
+    </div>
+
+    <div class="mode-records">
+        <h3>モード別の最高記録</h3>
+
+        <div class="record-line">
+            <span>単語モード</span>
+            <strong id="bestWords">記録なし</strong>
+        </div>
+
+        <div class="record-line">
+            <span>短文モード</span>
+            <strong id="bestSentences">記録なし</strong>
+        </div>
+
+        <div class="record-line">
+            <span>英文モード</span>
+            <strong id="bestEnglish">記録なし</strong>
+        </div>
+
+        <div class="record-line">
+            <span>ミス制限モード</span>
+            <strong id="bestMissLimit">記録なし</strong>
+        </div>
+
+        <div class="record-line">
+            <span>長文モード</span>
+            <strong id="bestLongText">記録なし</strong>
+        </div>
+    </div>
+</section>
+
             </div>
 
             <section class="panel history-panel">
@@ -211,5 +246,7 @@
     </div>
 
     <footer>StrawTyping · Typing practice</footer>
+
+    <a href="news.html" class="news-link">📢 お知らせ</a>
 </body>
 </html>

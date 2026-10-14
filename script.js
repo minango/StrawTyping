@@ -72,7 +72,7 @@ const combo = {
 
 const modePrompts = {
     words: [
-        "猫", "りんご", "桜", "いぬ", "そら",
+        "ねこ", "りんご", "さくら", "いぬ", "そら",
         "たまご", "すいか", "はなび", "でんしゃ",
         "ともだち", "ひまわり", "ほしぞら",
         "がっこう", "しんぶん", "ありがとう"
@@ -131,6 +131,10 @@ let currentWord = null;
 let currentTokens = [];
 let typed = "";
 
+// 1つの文章ごとの計測
+let promptStartedAt = 0;
+let promptFirstKeyAt = null;
+
 let score = 0;
 let correct = 0;
 let mistakes = 0;
@@ -171,6 +175,26 @@ function getElapsedTime() {
         0,
         now - gameStartedAt - totalPausedTime
     );
+}
+
+// 文章ごとのKPMと初速を表示
+function showPromptStats() {
+    const elapsedSeconds =
+        (Date.now() - promptStartedAt) / 1000;
+
+    const kpm = elapsedSeconds > 0
+        ? Math.round(typed.length * 60 / elapsedSeconds)
+        : 0;
+
+    const firstSpeed = promptFirstKeyAt !== null
+        ? ((promptFirstKeyAt - promptStartedAt) / 1000)
+            .toFixed(2)
+        : "未入力";
+
+    $("message").textContent =
+        `KPM：${kpm} ／ 初速：${firstSpeed}${
+            firstSpeed === "未入力" ? "" : "秒"
+        }`;
 }
 
 // 次の問題を700ms後に表示
@@ -263,13 +287,36 @@ function updateStats() {
 function refreshRecords() {
     const history = getHistory();
 
-    const best = history.reduce(
-        (maximum, item) => Math.max(maximum, item.kpm || 0),
-        0
-    );
 
-    $("bestScore").textContent = best;
-    $("playCount").textContent = `${history.length}回`;
+const best = history.reduce(
+    (maximum, item) => Math.max(maximum, item.kpm || 0),
+    0
+);
+
+$("bestScore").textContent = best;
+$("playCount").textContent = `${history.length}回`;
+
+// モード別の最高KPM
+const modeRecords = [
+    ["bestWords", "単語モード"],
+    ["bestSentences", "短文モード"],
+    ["bestEnglish", "英文モード"],
+    ["bestMissLimit", "ミス制限モード"],
+    ["bestLongText", "長文モード"]
+];
+
+modeRecords.forEach(([elementId, modeName]) => {
+    const modeBest = history
+        .filter(item => item.difficulty === modeName)
+        .reduce(
+            (maximum, item) => Math.max(maximum, item.kpm || 0),
+            0
+        );
+
+    $(elementId).textContent =
+        modeBest > 0 ? `KPM ${modeBest}` : "記録なし";
+});
+
 
     const ranking = [...history]
         .sort((a, b) => (b.kpm || 0) - (a.kpm || 0))
@@ -476,6 +523,9 @@ function nextWord() {
     }
 
     typed = "";
+
+    promptStartedAt = Date.now();
+    promptFirstKeyAt = null;
 
     $("romaji").classList.remove("mistake");
     $("word").textContent = currentWord.japanese;
@@ -760,6 +810,18 @@ document.addEventListener("keydown", event => {
 
     const key = event.key;
 
+    if (
+        promptFirstKeyAt === null &&
+         key.length === 1 &&
+          (
+               activePromptMode === "english"
+                 ? /^[a-z0-9 .,!?'-]$/i.test(key)
+                    : /^[a-z]$/i.test(key)
+          )
+        ) {
+              promptFirstKeyAt = Date.now();
+        }
+
     // 長文タイムアタック：英語
     if (
         currentDifficulty === "longText" &&
@@ -873,24 +935,24 @@ document.addEventListener("keydown", event => {
         updateStats();
 
         if (typed.length === target.length) {
-            score++;
-            correct++;
+        showPromptStats();
+         score++;
+         correct++;
 
-            playSound("correct");
+         playSound("correct");
             updateStats();
 
             if (score >= TOTAL_QUESTIONS) {
-                finishGame();
-            } else {
-                $("message").textContent = "";
+               finishGame();
+         } else {
                 scheduleNextWord();
-            }
+          }
         } else {
-            $("message").textContent = "";
+          $("message").textContent = "";
         }
 
-        return;
-    }
+              return;
+            }
 
     // 日本語モードは英字のみ
     if (!/^[a-z]$/i.test(key)) return;
@@ -942,21 +1004,21 @@ document.addEventListener("keydown", event => {
 
     // すべて入力し終えたかを確認
     if (canMatch(typed, currentTokens, true)) {
-        score++;
-        correct++;
+    showPromptStats();
+    score++;
+    correct++;
 
-        playSound("correct");
-        updateStats();
+    playSound("correct");
+    updateStats();
 
-        if (score >= TOTAL_QUESTIONS) {
-            finishGame();
-        } else {
-            $("message").textContent = "";
-            scheduleNextWord();
-        }
+    if (score >= TOTAL_QUESTIONS) {
+        finishGame();
     } else {
-        $("message").textContent = "";
+        scheduleNextWord();
     }
+} else {
+    $("message").textContent = "";
+}
 });
 
 // ホーム画面・結果画面でSpaceキーを押すと開始
@@ -989,3 +1051,4 @@ document.addEventListener("keydown", event => {
 $("soundButton").textContent = "効果音：ON";
 refreshRecords();
 showScreen("home");
+refreshRecords();
