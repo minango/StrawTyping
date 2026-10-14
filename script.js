@@ -153,7 +153,7 @@ const modePrompts = {
     "We found it easy to use the app.",
     "I am such a genius.",
     "You can open online data to save the menu.",
-    "The admin can check the visual signals on site "
+    "The admin can check the visual signals on site."
 ]
 };
 
