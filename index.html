@@ -192,11 +192,20 @@
             </div>
 
             <section class="panel">
-                <div class="question">
-                    <p class="muted">表示された内容を入力</p>
-                    <h2 id="word">準備中…</h2>
-                    <p id="romaji" class="romaji"></p>
-                </div>
+                
+<div class="question">
+    <p class="muted">表示された内容を入力</p>
+
+    <!-- 漢字表示（新しく追加） -->
+    <h2 id="wordKanji" class="kanji-word" hidden></h2>
+
+    <!-- ひらがな表示（今までどおり） -->
+    <h2 id="word">準備中…</h2>
+
+    <!-- ローマ字表示（今までどおり） -->
+    <p id="romaji" class="romaji"></p>
+</div>
+
                 <p id="message" class="message">準備しよう！</p>
                 <p class="key-hint">キーボードで直接入力 · Escで中断</p>
             </section>
