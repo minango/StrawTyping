@@ -767,7 +767,8 @@ footer {
     }
 }
 
-/* スマホ・狭い画面 */
+
+/* ===== スマホ・狭い画面 ===== */
 @media (max-width: 600px) {
     #gameScreen .question h2 {
         font-size: 24px;
@@ -778,11 +779,34 @@ footer {
         letter-spacing: 0;
     }
 
-    #gameScreen.long-text-mode #word {
-        font-size: 19px;
+    /* 長文モードは小さく表示 */
+    #gameScreen.long-text-mode #word,
+    #gameScreen.long-text-mode .question h2 {
+        font-size: 14px;
+        line-height: 1.8;
     }
 
     #gameScreen.long-text-mode #romaji {
-        font-size: 22px;
+        font-size: 14px;
+        line-height: 1.8;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+        white-space: pre-wrap;
     }
+}
+
+/* ===== 長文モードの基本サイズ ===== */
+#gameScreen.long-text-mode #word,
+#gameScreen.long-text-mode .question h2 {
+    font-size: 16px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+#gameScreen.long-text-mode #romaji {
+    font-size: 16px;
+    line-height: 1.8;
+    letter-spacing: 0;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
 }
