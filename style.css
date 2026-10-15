@@ -786,30 +786,3 @@ footer {
         font-size: 22px;
     }
 }
-/* 長文モードの文章を読みやすくする */
-#gameScreen .question h2 {
-    font-size: 18px;
-    line-height: 1.9;
-    overflow-wrap: anywhere;
-}
-
-/* 長文モードのローマ字を小さくする */
-#gameScreen .question .romaji {
-    font-size: 16px;
-    line-height: 1.8;
-    letter-spacing: 0;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-}
-
-/* 画面が狭い場合 */
-@media (max-width: 650px) {
-    #gameScreen .question h2 {
-        font-size: 16px;
-    }
-
-    #gameScreen .question .romaji {
-        font-size: 14px;
-    }
-}
-```
