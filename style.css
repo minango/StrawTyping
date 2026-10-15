@@ -735,18 +735,36 @@ footer {
     font-size: inherit;
 }
 
-/* 長文モードは日本語を少し小さめに */
-#gameScreen.long-text-mode #word {
-    font-size: 22px;
-    line-height: 1.9;
+/* ===== 長文モードの文字サイズ ===== */
+
+/* 長文の日本語 */
+#gameScreen.long-text-mode #word,
+#gameScreen.long-text-mode .question h2 {
+    font-size: 18px;
+    line-height: 1.8;
     overflow-wrap: anywhere;
+    word-break: normal;
 }
 
-/* 長文モードのローマ字 */
+/* 長文のローマ字 */
 #gameScreen.long-text-mode #romaji {
-    font-size: 28px;
+    font-size: 18px;
     line-height: 1.8;
-    letter-spacing: 1px;
+    letter-spacing: 0;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+/* スマホなどの狭い画面 */
+@media (max-width: 600px) {
+    #gameScreen.long-text-mode #word,
+    #gameScreen.long-text-mode .question h2 {
+        font-size: 16px;
+    }
+
+    #gameScreen.long-text-mode #romaji {
+        font-size: 16px;
+    }
 }
 
 /* スマホ・狭い画面 */
@@ -768,11 +786,4 @@ footer {
         font-size: 22px;
     }
 }
-
-/* 漢字のお題表示 */
-.kanji-word {
-    font-size: clamp(1.6rem, 4vw, 2.4rem);
-    line-height: 1.5;
-    margin: 0 0 8px;
-    overflow-wrap: anywhere;
-}
+```
