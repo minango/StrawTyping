@@ -894,6 +894,13 @@ function updateModeSettings() {
     $("longSettings").hidden = mode !== "longText";
 }
 
+$("missLimit").addEventListener("input", () => {
+    const input = $("missLimit");
+
+    if (input.value !== "" && Number(input.value) > 10) {
+        input.value = "10";
+    }
+});
 $("difficulty").addEventListener("change", updateModeSettings);
 updateModeSettings();
 
