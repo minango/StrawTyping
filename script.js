@@ -935,10 +935,15 @@ function startGame() {
 
     if (currentDifficulty === "missLimit") {
         activePromptMode = $("missType").value;
-        missLimit = Math.max(
-            1,
-            Number.parseInt($("missLimit").value, 10) || 1
-        );
+
+missLimit = Math.min(
+    10,
+    Math.max(
+        1,
+        Number.parseInt($("missLimit").value, 10) || 1
+    )
+);
+
     } else if (currentDifficulty === "longText") {
         activePromptMode =
             $("longLanguage").value === "english"
