@@ -695,12 +695,15 @@ function startGame() {
     timerInterval = null;
     timeRemaining = 30;
 
-    if (currentDifficulty === "missLimit") {
-        activePromptMode = $("missType").value;
-        missLimit = Math.max(
-            1,
-            Number.parseInt($("missLimit").value, 10) || 1
-        );
+if (currentDifficulty === "missLimit") {
+    activePromptMode = $("missType").value;
+
+    const selectedLimit =
+        Number.parseInt($("missLimit").value, 10) || 5;
+
+    missLimit = Math.min(10, Math.max(1, selectedLimit));
+    $("missLimit").value = missLimit;
+    
     } else if (currentDifficulty === "longText") {
         activePromptMode =
             $("longLanguage").value === "english"
