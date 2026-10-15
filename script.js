@@ -353,16 +353,31 @@ const kanjiPrompts = {
 // 日本語はローマ字入力しやすいひらがな文
 const longPassages = {
     japanese: [
-    "あさのひかりがまどからさしこみ、へやのなかがすこしずつあかるくなりました。わたしはかおをあらい、あさごはんをたべてから、きょうのよていをのーとにかきました。そとではことりがなき、にわのきにはちいさなはがかぜにゆれています。がっこうへむかうみちでは、ちかくのひとにあいさつをしました。いつものけしきにも、あたらしいはっけんがあります。",
+    "わたしはしょうがっこうのきゅうしょくがだいすきです。まいにちまいにちのがっこうのたのしみのひとつでもあります。わたしはしょうがくせいのころ、ょうががきらいでした。しかし、きゅうしょくのおばさんがつくってくれたぎゅうにくのしょうがやきがとてもおいしくてなんかいもおかわりをしました。いまではしょうががだいすきです。",
 
-    "たいぴんぐがじょうずになるには、はやさだけでなく、せいかくさをいしきすることがたいせつです。はじめはキーのばしょをさがすのにじかんがかかっても、すこしずつれんしゅうすれば、ゆびのうごきがしぜんになります。ほーむぽじしょんにもどるくせをつけると、つぎのもじをうちやすくなります。まちがえたときは、あせらずにかくにんしましょう。",
+    "としょかんには、たくさんののしゅるいのほんがあります。いろいろなまんがやしょうせつ、げーむのこうりゃくぼん、すうがくやえいごのさんこうしょなど。わたしはきょう、きょうみがあったうちゅうについてのほんをよんでみました。よんでみると、うちゅうはおくがふかくいがいとおもしろいせかいがありました。これらをきっかけにわたしはしょうらいうちゅうひこうしをめざしています。",
 
-    "やすみのひのごご、わたしはちかくのこうえんまでさんぽにでかけました。みちのわきにはいろとりどりのはながさき、きのはのあいだからやわらかなひかりがさしていました。ひろばではこどもたちがげんきにあそび、べんちではほんをよんでいるひとがいます。わたしはそらをながめながら、ゆっくりとしたじかんをたのしみました。",
+    "わたしはたいぴんぐのそくどにじしんがあります。たいぴんぐをはじめようとおもったきっかけは、がっこうのぱそこんをもらってやってみたらたのしかったからです。ここまでじょうたつするためには、まいにちまいにちどりょくをおしまずれんしゅうしました。とちゅうくじけることもあったけれどずっともくひょうへむかってがんばりつづけました。いつかたいぴんぐのたいかいでゆうしょうしたいです。",
 
-    "あたらしいことをはじめるとき、さいしょからじょうずにできるひとはおおくありません。しっぱいしても、くりかえしちょうせんすることで、すこしずつできることがふえていきます。おおきなもくひょうだけでなく、きょうできるちいさなことをたいせつにしましょう。つかれたときにはやすみ、じぶんのぺーすでつづけることが、せいちょうにつながります。",
+    "しっぱいはせいこうのもと、ということばがあります。あたらしいことをはじめるとき、さいしょからかんぺきにできるひとはしょうすうです。ただ、そうやってしっぱいをおそれてなにもしなかったらあらたなけいけんはなにもえることができません。だからしっぱいしてもいい、とにかくしっぱいをおそれずなにごとにもちょうせんすることがだいじです。",
 
-    "としょかんには、しらないせかいをおしえてくれるほんがたくさんあります。どうぶつのくらしや、とおいくにのぶんか、かがくのふしぎについてかかれたほんなど、しゅるいもさまざまです。わたしはせんじつ、ほしやつきについてのほんをよみました。きになったことをのーとにかいてしらべると、いつものけしきにもあたらしいはっけんがふえていきます。"
+    "わたしはべんきょうがだいすきで、まいにちまいにちべんきょうをしています。あたらしいことをしったときのうれしさや、むずかしいもんだいをとけたときのたっせいかんがあるからです。わたしはかなりへんさちのたかいめいもんこうをめざしています。なのでまださきのはなしでも、いまもべんきょうをがんばっています。"
 ],
+
+const longPassagesKanji = {
+    japanese: [
+        "私は小学校の給食が大好きです。毎日毎日の学校の楽しみの一つでもあります。私は小学生のころ、しょうがが嫌いでした。しかし、給食のおばさんが作ってくれた牛肉のしょうが焼きがとてもおいしくて何回もおかわりをしました。今ではしょうがが大好きです。",
+
+        "図書館には、たくさんの種類の本があります。いろいろな漫画や小説、ゲームの攻略本、数学や英語の参考書など。私は今日、興味があった宇宙についての本を読んでみました。読んでみると、宇宙は奥が深く意外と面白い世界がありました。これらをきっかけに私は将来宇宙飛行士を目指しています。",
+
+        "私はタイピングの速度に自信があります。タイピングを始めようと思ったきっかけは、学校のパソコンをもらってやってみたら楽しかったからです。ここまで上達するためには、毎日毎日努力を惜しまず練習しました。途中くじけることもあったけれど、ずっと目標へ向かって頑張り続けました。いつかタイピングの大会で優勝したいです。",
+
+        "失敗は成功のもと、という言葉があります。新しいことを始めるとき、最初から完璧にできる人は少数です。ただ、そうやって失敗を恐れて何もしなかったら、新たな経験は何も得ることができません。だから失敗してもいい、とにかく失敗を恐れず何事にも挑戦することが大事です。",
+
+        "私は勉強が大好きで、毎日毎日勉強をしています。新しいことを知ったときの嬉しさや、難しい問題を解けたときの達成感があるからです。私はかなり偏差値の高い名門校を目指しています。なのでまだ先の話でも、今も勉強を頑張っています。"
+    ]
+};
+
     english: [
     "Typing is a skill that improves with practice. Start slowly and focus on accuracy before trying to type faster. When you make a mistake, take a moment to find the correct key and try again. A little practice every day can help you become more confident. Enjoy learning at your own pace and celebrate every small improvement.",
 
@@ -832,34 +847,55 @@ function updateRomaji() {
 
 // 次のお題
 function nextWord() {
-    if (currentDifficulty === "longText") {
-        const language = $("longLanguage").value;
-        const passages = longPassages[language];
 
-        currentWord = {
-            japanese: passages[
-                Math.floor(Math.random() * passages.length)
-            ]
-        };
-    } else {
-        currentWord = getRandomWord();
-    }
+if (currentDifficulty === "longText") {
+    const language = $("longLanguage").value;
+    const passages = longPassages[language];
+    const randomIndex = Math.floor(
+        Math.random() * passages.length
+    );
+
+    currentWord = {
+        japanese: passages[randomIndex],
+        display: language === "japanese"
+            ? longPassagesKanji.japanese[randomIndex]
+            : ""
+    };
+} else {
+    currentWord = getRandomWord();
+}
+
 
     typed = "";
 
     promptStartedAt = Date.now();
     promptFirstKeyAt = null;
 
-    $("romaji").classList.remove("mistake");
-    $("word").textContent = currentWord.japanese;
-    const kanjiElement = $("wordKanji");
+
+$("romaji").classList.remove("mistake");
+$("word").textContent = currentWord.japanese;
+
+const kanjiElement = $("wordKanji");
 
 if (kanjiElement) {
-    const kanjiText =
-        kanjiPrompts[activePromptMode]?.[currentWord.japanese] || "";
+    let kanjiText = "";
+
+    if (
+        currentDifficulty === "longText" &&
+        $("longLanguage").value === "japanese"
+    ) {
+        kanjiText = currentWord.display || "";
+    } else {
+        kanjiText =
+            kanjiPrompts[activePromptMode]?.[
+                currentWord.japanese
+            ] || "";
+    }
 
     kanjiElement.textContent = kanjiText;
     kanjiElement.hidden = kanjiText === "";
+}
+
 }
 
     if (activePromptMode === "english") {
